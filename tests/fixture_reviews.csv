@@ -1,0 +1,46 @@
+review_id,date,rating,review,thumbs_up
+t01,2026-10-12 09:10:00,1,"They deducted brokerage and extra charges I never knew about when I sold my shares, why is this hidden?",9
+t02,2026-10-11 10:00:00,1,"DP charges of 20 rupees taken after every sell, nobody told me about this extra deduction",7
+t03,2026-10-10 11:20:00,2,"app is very slow and hangs at market open, order not placed",4
+t04,2026-10-10 12:00:00,5,"Very easy to use and beginner friendly, smooth experience for investing",1
+t05,2026-10-09 08:30:00,1,"Customer support never replies to my ticket, no resolution for 2 weeks",6
+t06,2026-10-09 14:45:00,1,"brokerage is too high compared to what they advertise, extra charges everywhere",5
+t07,2026-10-08 16:10:00,4,"good app simple interface but sometimes lag during peak hours",0
+t08,2026-10-08 17:00:00,1,"Withdrawal stuck for three days and support gives no answer",3
+t09,2026-10-07 09:00:00,5,"best app for beginners, user friendly and easy to start sip",2
+t10,2026-10-07 10:30:00,2,"Why was GST and extra money deducted from my sell order? Not mentioned anywhere",4
+t11,2026-10-06 13:00:00,1,"app crashes whenever i try to place order, very bad glitch",2
+t12,2026-10-06 15:00:00,3,"ok app but brokerage charges confusing on contract note",1
+t13,2026-10-05 12:00:00,1,"DP charge for selling shares is unexpected, bina bataye paise kat gaye",6
+t14,2026-10-05 18:00:00,5,"Smooth and simple, easy to invest in mutual funds",0
+t15,2026-10-04 09:30:00,1,"support team is useless, complaint not resolved, ticket closed without answer",5
+t16,2026-10-04 11:15:00,2,"slow app, keeps freezing and showing error",3
+t17,2026-10-03 10:10:00,1,"hidden charges on every trade, brokerage plus other fees, misleading zero brokerage claim",8
+t18,2026-10-03 16:40:00,4,"nice interface, easy navigation and quick account opening",1
+t19,2026-10-02 10:00:00,1,"auto square off charge taken without informing me, ₹50 deducted",3
+t20,2026-10-02 12:30:00,1,"withdrawal money not credited to bank for days, payment issue",4
+t21,2026-10-01 09:00:00,5,"very easy to use app, good for beginners",0
+t22,2026-10-01 10:45:00,1,"Call me on 9876543210 about my PAN ABCDE1234F, support never responded to ticket",2
+t23,2026-09-30 11:00:00,2,"brokerage charges deducted twice on same order, why? please explain",3
+t24,2026-09-29 14:00:00,1,"app lag and hang during trading, lost money because order not executed",5
+t25,2026-09-28 09:00:00,5,"Simple and smooth app, easy investing for new users",1
+t26,2026-09-27 15:00:00,1,"MTF interest is charged daily and nobody explained it, unexpected deduction",2
+t27,2026-09-26 10:00:00,3,"Average app, support is slow and charges are a bit confusing",1
+t28,2026-09-25 13:30:00,1,"email me at someone@example.com their support is bad no resolution",1
+t29,2026-09-24 09:00:00,4,"easy to use, brokerage is fine but hanging sometimes",0
+t30,2026-09-23 12:00:00,1,"charged DP charges plus GST on selling, extra amount cut from account without telling",5
+t31,2026-09-20 12:00:00,5,"Good",0
+t32,2026-09-20 13:00:00,5,"Very easy to use and beginner friendly, smooth experience for investing",0
+t33,2026-09-18 10:00:00,2,"payment through UPI failed but money debited, refund pending",3
+t34,2026-09-15 10:00:00,1,"app not working after update, keeps crashing",2
+t35,2026-09-10 10:00:00,5,"Excellent platform to invest, smooth and simple for beginners",2
+t36,2026-09-05 10:00:00,1,"hidden brokerage charges, why so much deducted from profit?",4
+t37,2026-08-20 10:00:00,1,"brokerage extra deduction unexpected on my sell",1
+t38,2026-08-10 10:00:00,5,"simple user friendly app, easy to use",0
+t39,2026-07-01 10:00:00,1,"This review is older than the twelve week window and should be dropped",0
+t40,2026-10-12 07:00:00,x,"bad rating value should be dropped from the data set",0
+t41,2026-10-12 07:30:00,4,"",0
+t42,2026-10-11 07:30:00,1,"Support not helpful at all, no one resolves complaints, ticket pending",3
+t43,2026-10-10 07:30:00,2,"worst app speed, very slow, hangs often, bug after update",2
+t44,2026-10-09 07:30:00,1,"Why are there so many charges? brokerage, DP, GST, I did not expect this",6
+t45,2026-10-08 07:30:00,5,"easy interface and smooth to use, beginner friendly",0

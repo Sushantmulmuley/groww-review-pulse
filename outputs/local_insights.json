@@ -1,0 +1,214 @@
+{
+  "run_date": "2026-10-17",
+  "scope": {
+    "rows_in": 12770,
+    "dropped_bad_row": 0,
+    "dropped_duplicate": 6878,
+    "dropped_short": 2676,
+    "dropped_outside_window": 0,
+    "pii_redacted": 1,
+    "kept": 3216,
+    "date_from": "2026-07-25",
+    "date_to": "2026-10-16",
+    "avg_rating": 3.42,
+    "low_star_pct": 35.3
+  },
+  "themes": [
+    {
+      "name": "App speed and reliability",
+      "keywords": [
+        "slow",
+        "lag",
+        "hang",
+        "crash",
+        "glitch",
+        "bug",
+        "not working",
+        "stuck",
+        "error",
+        "freez"
+      ],
+      "one_line": "Slowness, freezes and failed actions.",
+      "count": 255,
+      "share_pct": 7.9,
+      "avg_rating": 2.18,
+      "low_star_pct": 66.3
+    },
+    {
+      "name": "Support and resolution",
+      "keywords": [
+        "support",
+        "customer care",
+        "ticket",
+        "complaint",
+        "no response",
+        "resolution",
+        "helpline"
+      ],
+      "one_line": "Support that is slow or does not resolve issues.",
+      "count": 234,
+      "share_pct": 7.3,
+      "avg_rating": 1.69,
+      "low_star_pct": 80.8
+    },
+    {
+      "name": "Charges and fees",
+      "keywords": [
+        "charge",
+        "brokerage",
+        "fee",
+        "deduct",
+        "commission",
+        "gst",
+        "hidden"
+      ],
+      "one_line": "Deductions users did not expect.",
+      "count": 273,
+      "share_pct": 8.5,
+      "avg_rating": 2.58,
+      "low_star_pct": 55.3
+    },
+    {
+      "name": "Easy to use",
+      "keywords": [
+        "easy",
+        "simple",
+        "user friendly",
+        "user-friendly",
+        "smooth",
+        "beginner",
+        "best app",
+        "good app",
+        "nice"
+      ],
+      "one_line": "Simple, beginner-friendly experience.",
+      "count": 814,
+      "share_pct": 25.3,
+      "avg_rating": 4.76,
+      "low_star_pct": 2.6
+    },
+    {
+      "name": "Money in and out",
+      "keywords": [
+        "withdraw",
+        "refund",
+        "payment",
+        "upi",
+        "bank",
+        "credited",
+        "settlement"
+      ],
+      "one_line": "Withdrawals, payments and settlement timing.",
+      "count": 87,
+      "share_pct": 2.7,
+      "avg_rating": 2.28,
+      "low_star_pct": 63.2
+    }
+  ],
+  "unmatched": 1553,
+  "unmatched_pct": 48.3,
+  "top_themes": [
+    {
+      "name": "Easy to use",
+      "count": 814,
+      "share_pct": 25.3,
+      "avg_rating": 4.76,
+      "low_star_pct": 2.6
+    },
+    {
+      "name": "Charges and fees",
+      "count": 273,
+      "share_pct": 8.5,
+      "avg_rating": 2.58,
+      "low_star_pct": 55.3
+    },
+    {
+      "name": "App speed and reliability",
+      "count": 255,
+      "share_pct": 7.9,
+      "avg_rating": 2.18,
+      "low_star_pct": 66.3
+    }
+  ],
+  "quotes": [
+    {
+      "review_id": "827bd38051",
+      "date": "2026-07-28",
+      "rating": 5,
+      "theme": "Easy to use",
+      "text": "Great app with a clean and user-friendly interface. It makes investing simple and easy to understand, even for beginners. The account setup is smooth, transactions are fast, and the educational …"
+    },
+    {
+      "review_id": "e0ddb95ca3",
+      "date": "2026-10-06",
+      "rating": 4,
+      "theme": "Charges and fees",
+      "text": "After the budget, the charges and taxes rates aren't affordable for the middle class (even for all classes), it is imposing too much taxes and charges (on all buying and …"
+    },
+    {
+      "review_id": "2a7d628c28",
+      "date": "2026-09-20",
+      "rating": 3,
+      "theme": "App speed and reliability",
+      "text": "delay chart, slow chart sometimes stuck. and lots of bugs in this app"
+    }
+  ],
+  "fee_issue": {
+    "id": "overall_charges",
+    "name": "Charges deducted on a trade",
+    "named": 127,
+    "confused": 26,
+    "confusion_rate_pct": 20.5,
+    "summary": "26 of 127 reviews that mention charges deducted on a trade describe it as unexpected, hidden or unclear.",
+    "trend": {
+      "recent_per_week": 1.8,
+      "earlier_per_week": 2.1,
+      "direction": "flat"
+    },
+    "candidates": [
+      {
+        "id": "overall_charges",
+        "named": 127,
+        "confused": 26,
+        "confusion_rate_pct": 20.5
+      },
+      {
+        "id": "brokerage",
+        "named": 99,
+        "confused": 10,
+        "confusion_rate_pct": 10.1
+      },
+      {
+        "id": "mtf_interest",
+        "named": 16,
+        "confused": 2,
+        "confusion_rate_pct": 12.5
+      },
+      {
+        "id": "gst_taxes",
+        "named": 11,
+        "confused": 2,
+        "confusion_rate_pct": 18.2
+      },
+      {
+        "id": "auto_square_off",
+        "named": 6,
+        "confused": 2,
+        "confusion_rate_pct": 33.3
+      },
+      {
+        "id": "dp_charges",
+        "named": 6,
+        "confused": 1,
+        "confusion_rate_pct": 16.7
+      }
+    ],
+    "low_sample": false
+  },
+  "flags": [
+    "model themes unusable; default taxonomy used",
+    "quote 827bd38051 chosen by code",
+    "quote e0ddb95ca3 chosen by code",
+    "quote 2a7d628c28 chosen by code"
+  ]
+}

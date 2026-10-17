@@ -1,0 +1,76 @@
+{
+  "_about": "Small fact bank for the fee explainer. Every fact was read from the official Groww pages listed in sources on the date in last_checked. The explainer is built only from entries in this file; the model may reword or reorder them but code rejects any number that is not in the entry.",
+  "last_checked": "17 Oct 2026",
+  "sources": {
+    "pricing": { "title": "Groww: Brokerage charges and pricing", "url": "https://groww.in/pricing" },
+    "help_dp": { "title": "Groww Help: When are DP charges levied?", "url": "https://groww.in/help/stocks,-f&o,-ipo-&-mtf/searchable/when-are-dp-charges-levied" },
+    "help_charges": { "title": "Groww Help: How much does Groww charge for stocks?", "url": "https://groww.in/help/stocks,-f&o,-ipo-&-mtf/sx-demat-account/how-much-does-groww-charge-for-stocks-1" }
+  },
+  "entries": {
+    "brokerage": {
+      "name": "Brokerage",
+      "source_keys": ["pricing", "help_charges"],
+      "facts": [
+        "Groww's equity brokerage is ₹20 or 0.1% of the order value, whichever is lower, with a minimum of ₹5 per executed order.",
+        "The charge applies per executed order, so a buy order and a sell order are separate orders.",
+        "18% GST applies on brokerage.",
+        "Regulatory and statutory charges are listed separately from brokerage on the pricing page, and the help page says they are levied by the exchange, not by Groww.",
+        "Delivery sell transactions also carry a separate DP charge, which is not part of brokerage."
+      ]
+    },
+    "dp_charges": {
+      "name": "DP charges on selling shares",
+      "source_keys": ["help_dp", "pricing"],
+      "facts": [
+        "DP (depository participant) charges are triggered when shares leave the demat account, which happens on sales, and are calculated per sell transaction.",
+        "Intraday DP charges are ₹0; the charge applies to delivery sells.",
+        "The charge has two parts: ₹16.50 charged by Groww and ₹3.50 charged by the depository, or ₹3.25 for women.",
+        "Groww's ₹16.50 part is not charged when the debit value is under ₹100; the depository part still applies.",
+        "18% GST applies on DP charges.",
+        "The charge is a fixed rupee amount per sell transaction, not a percentage of the sale value."
+      ]
+    },
+    "auto_square_off": {
+      "name": "Auto square-off charge",
+      "source_keys": ["pricing", "help_charges"],
+      "facts": [
+        "Groww lists an auto square-off charge of ₹50 per position for open intraday positions that the system squares off.",
+        "18% GST applies on auto square-off charges."
+      ]
+    },
+    "mtf_interest": {
+      "name": "MTF interest and brokerage",
+      "source_keys": ["pricing", "help_charges"],
+      "facts": [
+        "Interest on Margin Trading Facility (MTF) funding is 14.95% per annum on the funded amount.",
+        "MTF brokerage is separate: 0.1% of the order value per order."
+      ]
+    },
+    "gst_taxes": {
+      "name": "GST, STT and other statutory charges",
+      "source_keys": ["pricing", "help_charges"],
+      "facts": [
+        "18% GST applies on brokerage, DP charges, exchange transaction charges, SEBI turnover charges, delayed payment charges and auto square-off charges.",
+        "Securities Transaction Tax (STT) is 0.1% on both buy and sell for delivery orders, and 0.025% on sell orders for intraday.",
+        "Stamp duty is 0.015% on buy orders for delivery and 0.003% on buy orders for intraday.",
+        "The SEBI turnover charge is 0.0001% on both buy and sell.",
+        "The help page states that regulatory and statutory fees are levied by the exchange, not by Groww."
+      ]
+    },
+    "overall_charges": {
+      "name": "Charges deducted on a trade",
+      "source_keys": ["pricing", "help_charges"],
+      "facts": [
+        "Brokerage is ₹20 or 0.1% of the order value, whichever is lower, with a minimum of ₹5 per executed order.",
+        "Selling shares from the demat account also attracts a DP charge: ₹16.50 charged by Groww (not charged when the debit value is under ₹100) plus ₹3.50 charged by the depository.",
+        "18% GST applies on brokerage and DP charges.",
+        "Regulatory and statutory charges such as STT, stamp duty and SEBI turnover fees are listed separately on the pricing page.",
+        "Intraday orders carry no DP charge."
+      ]
+    }
+  },
+  "_unresolved": [
+    "Groww's pricing page says DP charges are 'per sell transaction' but does not say whether that means per order or per stock; the explainer says 'per sell transaction' and does not go further.",
+    "The BSE exchange transaction rate differs between two sections of the pricing page, so no exchange transaction rate is quoted."
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "name": "MCP server: append_to_doc and create_email_draft",
+  "nodes": [
+    {
+      "id": "acfa9a03-681c-5839-81a6-41be7936a66a",
+      "name": "MCP Server Trigger",
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "path": "groww-review-pulse",
+        "authentication": "none"
+      },
+      "webhookId": "8a43903c-4ed5-5b9e-8b30-5fef26b716d2"
+    },
+    {
+      "id": "70c06348-990d-5b0d-82b9-cacd5f096877",
+      "name": "append_to_doc",
+      "type": "n8n-nodes-base.googleDocsTool",
+      "typeVersion": 2,
+      "position": [
+        -240,
+        300
+      ],
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Append one weekly log entry to the end of the product log Google Doc. Pass the full entry text exactly as given.",
+        "authentication": "oAuth2",
+        "resource": "document",
+        "operation": "update",
+        "documentURL": "REPLACE_WITH_YOUR_GOOGLE_DOC_URL",
+        "simple": true,
+        "actionsUi": {
+          "actionFields": [
+            {
+              "object": "text",
+              "action": "insert",
+              "locationChoice": "endOfSegmentLocation",
+              "insertSegment": "body",
+              "text": "={{ $fromAI('text', 'The full log entry to append at the end of the document', 'string') }}"
+            }
+          ]
+        },
+        "updateFields": {}
+      },
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "REPLACE_CRED_ID",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "id": "86854e6e-8d25-5ff4-8e72-98af7a40a463",
+      "name": "create_email_draft",
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.2,
+      "position": [
+        240,
+        300
+      ],
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Create a Gmail DRAFT email. This tool can only create a draft; it never sends.",
+        "resource": "draft",
+        "operation": "create",
+        "subject": "={{ $fromAI('subject', 'Email subject line', 'string') }}",
+        "emailType": "text",
+        "message": "={{ $fromAI('message', 'Plain-text email body', 'string') }}",
+        "options": {
+          "sendTo": "={{ $fromAI('to', 'Recipient email address', 'string') }}"
+        }
+      },
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "REPLACE_CRED_ID",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "append_to_doc": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "create_email_draft": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "active": false
+}
