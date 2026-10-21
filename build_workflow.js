@@ -199,6 +199,12 @@ const mainConn = {
   'MCP Client': { ai_tool: [[{ node: 'AI Agent (MCP)', type: 'ai_tool', index: 0 }]] },
   'AI Agent (MCP)': main('Logged')
 };
+// Google's Gemini API sometimes answers 503 (high demand). Retry the three model-calling nodes.
+['Gemini: themes, quotes, fee', 'Gemini: pulse and explainer', 'AI Agent (MCP)'].forEach(function (n) {
+  const nd = mainNodes.find(function (x) { return x.name === n; });
+  nd.retryOnFail = true; nd.maxTries = 4; nd.waitBetweenTries = 5000;
+});
+
 const mainWf = { name: 'Review pulse: reviews to approved log and draft', nodes: mainNodes, connections: mainConn, pinData: {}, settings: { executionOrder: 'v1' }, active: false };
 
 // ---------------- MCP server workflow ----------------

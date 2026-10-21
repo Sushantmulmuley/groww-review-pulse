@@ -137,7 +137,10 @@
           ]
         },
         "batching": {}
-      }
+      },
+      "retryOnFail": true,
+      "maxTries": 4,
+      "waitBetweenTries": 5000
     },
     {
       "id": "b472956e-1c35-5a5a-840f-86eeca944e36",
@@ -199,7 +202,10 @@
           ]
         },
         "batching": {}
-      }
+      },
+      "retryOnFail": true,
+      "maxTries": 4,
+      "waitBetweenTries": 5000
     },
     {
       "id": "8a9bfd9b-9d2f-5c57-8aa9-03cb9fd0c1c7",
@@ -343,7 +349,10 @@
           "systemMessage": "You are a logging assistant. A human has already approved the content you are given.\n\nYour only job is to call two tools, in order, passing the text exactly as supplied:\n1. the append_to_doc tool\n2. the create_email_draft tool\n\nNever edit, summarise, reorder or add to the supplied text. Never send an email: you can only create a draft. Do not call any tool twice. When both calls have succeeded, reply \"done\" and one short line per call. If a call fails, say which one failed and stop.",
           "enableStreaming": false
         }
-      }
+      },
+      "retryOnFail": true,
+      "maxTries": 4,
+      "waitBetweenTries": 5000
     },
     {
       "id": "2ae2447e-cc06-5b02-8b35-d06bb28190d4",
