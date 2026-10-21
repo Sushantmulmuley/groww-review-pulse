@@ -63,4 +63,3 @@ The model proposes and the code decides:
 ## Acknowledgements
 - The milestone brief from NextLeap's PM Fellowship defines the required tools, outputs and approval step.
 - The cohort's shared Build Guide inspired several design principles used here: let the model propose and let code count, rank themes by 1-2 star reviews, verify quotes word for word, and give the Gmail tool no way to send.
-- Another student's public prototype (Soapbox) prompted the idea of an evidence list, a weekly chart and an email draft panel. All code, text and design in this repository were written for this project.
