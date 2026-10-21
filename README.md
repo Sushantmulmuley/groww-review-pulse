@@ -59,3 +59,8 @@ The model proposes and the code decides:
 - Review text is user-written and unverified. Counts come from keyword tagging, so spot-check them.
 - Fee facts are copied from public pages and can go stale, so re-check the "Last checked" date.
 - The agent fills the MCP tool arguments. Check the doc entry and the draft by eye.
+
+## Acknowledgements
+- The milestone brief from NextLeap's PM Fellowship defines the required tools, outputs and approval step.
+- The cohort's shared Build Guide inspired several design principles used here: let the model propose and let code count, rank themes by 1-2 star reviews, verify quotes word for word, and give the Gmail tool no way to send.
+- Another student's public prototype (Soapbox) prompted the idea of an evidence list, a weekly chart and an email draft panel. All code, text and design in this repository were written for this project.
