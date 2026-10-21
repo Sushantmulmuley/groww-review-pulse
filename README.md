@@ -59,6 +59,7 @@ The model proposes and the code decides:
 - Review text is user-written and unverified. Counts come from keyword tagging, so spot-check them.
 - Fee facts are copied from public pages and can go stale, so re-check the "Last checked" date.
 - The agent fills the MCP tool arguments, and an agent can call a tool twice (one run appended the same entry to the Doc twice). Check the Doc entry and the draft by eye.
+- The model proposes themes differently on each run, so counts differ between runs (the demo video shows footage from separate runs: 280/134/132 in the Doc, 274/186/134 in the Gmail draft, 301/205/134 in Vitals). Within one run the code recounts everything and the numbers agree. Vitals is a snapshot of one run, and `outputs/run_2026-10-21/` holds that run's files.
 - The code verifies numbers, quotes, limits and tone. It does not verify claims about causes: the model's wording can include phrases such as "driven by" that the data does not prove.
 
 ## Acknowledgements
