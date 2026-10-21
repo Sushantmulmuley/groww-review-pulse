@@ -185,3 +185,11 @@ test('doc entry contains every field the brief lists', () => {
   const doc = L.buildDocEntry(L.buildPayload(ins, p, e).entry);
   ['date:', 'top_themes:', 'identified_fee_issue:', 'explanation_bullets:', 'source_links:', 'weekly_pulse:'].forEach(k => assert.ok(doc.includes(k), k));
 });
+
+test('repairJson: takes the last complete object when the model writes reasoning first', () => {
+  const { repairJson } = require('../code/lib.js');
+  const raw = 'Rule 5 check: no numbers.\nFormat:\n{ "themes": [ {"name": "template"} ] }\nWait, double-check.\n{ "themes": [ {"name": "Real theme", "keywords": ["slow"]} ], "quotes": [] }\nDone.';
+  assert.strictEqual(repairJson(raw).themes[0].name, 'Real theme');
+  assert.strictEqual(repairJson('{"a": "brace } inside", "b": 2}').b, 2);
+  assert.throws(() => repairJson('no json here'));
+});

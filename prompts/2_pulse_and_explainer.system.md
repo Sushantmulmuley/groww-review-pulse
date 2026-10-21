@@ -2,6 +2,8 @@ You write two short pieces for a product team and its support team, from verifie
 
 You are given INSIGHTS (counted by code) and FACTS about one charge (copied from Groww's official pages).
 
+Do not write your reasoning, rule checks or drafts. Your very first character must be the opening brace of the JSON object.
+
 Return ONLY one JSON object. No code fences, no commentary.
 
 {

@@ -240,11 +240,36 @@ function closeUp(s) {
   return out;
 }
 /** Parse model JSON; repairs code fences, trailing commas and truncated output. */
+// Some models write their reasoning before the answer. Return the LAST complete,
+// parseable top-level {...} object in the text, or undefined.
+function lastCompleteObject(s) {
+  let found, tail = -1;
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] !== '{') continue;
+    let depth = 0, inStr = false, esc = false, end = -1;
+    for (let j = i; j < s.length; j++) {
+      const c = s[j];
+      if (inStr) { if (esc) esc = false; else if (c === '\\') esc = true; else if (c === '"') inStr = false; continue; }
+      if (c === '"') inStr = true;
+      else if (c === '{') depth++;
+      else if (c === '}') { depth--; if (depth === 0) { end = j; break; } }
+    }
+    if (end < 0) { tail = i; break; } // an unfinished object: the answer was cut off
+    try {
+      const v = JSON.parse(s.slice(i, end + 1).replace(/,\s*([}\]])/g, '$1'));
+      if (v && typeof v === 'object' && !Array.isArray(v) && Object.keys(v).length) { found = v; i = end; }
+    } catch (e) { /* not an object, keep scanning */ }
+  }
+  return { found: tail >= 0 ? undefined : found, tail: tail };
+}
+
 function repairJson(raw) {
   let s = String(raw == null ? '' : raw).trim().replace(/^```(?:json)?/i, '').replace(/```\s*$/, '').trim();
   const a = s.indexOf('{');
   if (a < 0) throw new Error('model output has no JSON object');
-  s = s.slice(a);
+  const last = lastCompleteObject(s);
+  if (last.found !== undefined) return last.found;
+  s = s.slice(last.tail >= 0 ? last.tail : a);
   const tryParse = function (t) { try { return JSON.parse(t.replace(/,\s*([}\]])/g, '$1')); } catch (e) { return undefined; } };
   const b = s.lastIndexOf('}');
   if (b >= 0) { const v = tryParse(s.slice(0, b + 1)); if (v !== undefined) return v; }

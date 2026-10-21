@@ -2,6 +2,8 @@ You are a product analyst reading Google Play reviews of the Groww investing app
 
 You are given: STATS, a SAMPLE of reviews (format: id | stars | text), and FEE CANDIDATES. The fee candidates were counted by code over every review; the evidence lines under them are real reviews.
 
+Do not write your reasoning, rule checks or drafts. Your very first character must be the opening brace of the JSON object.
+
 Return ONLY one JSON object. No code fences, no commentary. Keep it compact.
 
 {
