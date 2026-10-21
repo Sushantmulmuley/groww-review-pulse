@@ -1,20 +1,20 @@
-Subject: Weekly Product Pulse + Customer Clarification — 17 Oct 2026
+Subject: Weekly Product Pulse + Customer Clarification — 21 Oct 2026
 
-# Weekly product pulse: 17 Oct 2026
+# Weekly product pulse: 21 Oct 2026
 Scope: 3216 reviews, 25 Jul 2026 to 16 Oct 2026; average 3.42 stars.
 
-## Top themes
-1. Easy to use: 814 reviews (25.3%), 4.76 stars
-2. Charges and fees: 273 reviews (8.5%), 2.58 stars
-3. App speed and reliability: 255 reviews (7.9%), 2.18 stars
+## Top themes (ranked by 1-2 star reviews)
+1. Support and resolution: 189 low-star of 234 reviews (7.3%), avg 1.69
+2. App speed and reliability: 169 low-star of 255 reviews (7.9%), avg 2.18
+3. Charges and fees: 151 low-star of 273 reviews (8.5%), avg 2.58
 
 ## What users said
-- "Great app with a clean and user-friendly interface. It makes investing simple and easy to understand, even for beginners. The account setup is smooth, transactions are fast, and the educational …" (5 stars, 28 Jul 2026)
-- "After the budget, the charges and taxes rates aren't affordable for the middle class (even for all classes), it is imposing too much taxes and charges (on all buying and …" (4 stars, 6 Oct 2026)
+- "Worst customer care service, no reply for last few of my complaints till now" (1 star, 21 Sep 2026)
 - "delay chart, slow chart sometimes stuck. and lots of bugs in this app" (3 stars, 20 Sep 2026)
+- "After the budget, the charges and taxes rates aren't affordable for the middle class (even for all classes), it is imposing too much taxes and charges (on all buying and …" (4 stars, 6 Oct 2026)
 
 ## Key observation
-Easy to use is the largest theme (814 reviews, 25.3%). Charges deducted on a trade is the charge users most often call unexpected: 26 of 127 reviews naming it say so. Mentions are steady week on week.
+Support and resolution has the most 1-2 star reviews (189 of 234). Charges deducted on a trade is the charge users most often call unexpected: 26 of 127 reviews naming it say so. Mentions are steady week on week.
 
 ## Actions
 1. Show the full charges deducted on a trade breakdown, including taxes, on the order confirmation screen.

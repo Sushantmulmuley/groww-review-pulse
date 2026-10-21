@@ -208,6 +208,7 @@ function tagThemes(reviews, themes) {
         name: b.name, keywords: b.keywords, one_line: b.one_line, count: b.ids.length,
         share_pct: round(100 * b.ids.length / total, 1),
         avg_rating: b.ids.length ? round(b.sum / b.ids.length, 2) : 0,
+        low_count: b.low,
         low_star_pct: b.ids.length ? round(100 * b.low / b.ids.length, 1) : 0,
         ids: b.ids
       };
@@ -308,7 +309,11 @@ function buildInsights(llm, reviews, bank, opts) {
   });
   if (proposed.length < 3) { flags.push('model themes unusable; default taxonomy used'); proposed = DEFAULT_THEMES; }
   const tagged = tagThemes(reviews, proposed);
-  const ranked = tagged.themes.slice().sort(function (a, b) { return b.count - a.count; });
+  // Ranking rule (written before looking at results): most 1-2 star reviews first; ties go to the
+  // theme with the higher share of unhappy reviewers, then to the larger theme.
+  const ranked = tagged.themes.slice().sort(function (a, b) {
+    return (b.low_count - a.low_count) || (b.low_star_pct - a.low_star_pct) || (b.count - a.count);
+  });
   const top3 = ranked.slice(0, 3);
 
   // quotes: model proposes, code verifies verbatim
@@ -361,9 +366,9 @@ function buildInsights(llm, reviews, bank, opts) {
   return {
     run_date: opts.runDate || iso(new Date()),
     scope: opts.stats || {},
-    themes: tagged.themes.map(function (t) { return { name: t.name, keywords: t.keywords, one_line: t.one_line, count: t.count, share_pct: t.share_pct, avg_rating: t.avg_rating, low_star_pct: t.low_star_pct }; }),
+    themes: tagged.themes.map(function (t) { return { name: t.name, keywords: t.keywords, one_line: t.one_line, count: t.count, share_pct: t.share_pct, avg_rating: t.avg_rating, low_count: t.low_count, low_star_pct: t.low_star_pct }; }),
     unmatched: tagged.unmatched, unmatched_pct: round(100 * tagged.unmatched / (total || 1), 1),
-    top_themes: top3.map(function (t) { return { name: t.name, count: t.count, share_pct: t.share_pct, avg_rating: t.avg_rating, low_star_pct: t.low_star_pct }; }),
+    top_themes: top3.map(function (t) { return { name: t.name, count: t.count, share_pct: t.share_pct, avg_rating: t.avg_rating, low_count: t.low_count, low_star_pct: t.low_star_pct }; }),
     quotes: quotes,
     fee_issue: { id: chosen.id, name: entry.name, named: chosen.named, confused: chosen.confused, confusion_rate_pct: chosen.confusion_rate_pct, summary: summary, trend: { recent_per_week: recentPw, earlier_per_week: earlierPw, direction: direction }, candidates: table.map(function (t) { return { id: t.id, named: t.named, confused: t.confused, confusion_rate_pct: t.confusion_rate_pct }; }), low_sample: chosen.named < 10 },
     flags: flags
@@ -373,7 +378,7 @@ function buildInsights(llm, reviews, bank, opts) {
 // ---------- 5. pulse ----------
 function pulseObservationFallback(ins) {
   const t = ins.top_themes[0], f = ins.fee_issue, tr = f.trend || {};
-  let s = t.name + ' is the largest theme (' + t.count + ' reviews, ' + t.share_pct + '%). ' +
+  let s = t.name + ' has the most 1-2 star reviews (' + t.low_count + ' of ' + t.count + '). ' +
     f.name + ' is the charge users most often call unexpected: ' + f.confused + ' of ' + f.named + ' reviews naming it say so.';
   if (tr.direction === 'up' || tr.direction === 'down') {
     s += ' Mentions are ' + (tr.direction === 'up' ? 'rising' : 'falling') + ': ' + tr.recent_per_week + ' a week lately against ' + tr.earlier_per_week + ' before.';
@@ -409,8 +414,8 @@ function assemblePulse(ins, parts, limit) {
     lines.push('# Weekly product pulse: ' + fmtDate(ins.run_date));
     lines.push('Scope: ' + s.kept + ' reviews, ' + fmtDate(s.date_from) + ' to ' + fmtDate(s.date_to) + '; average ' + s.avg_rating + ' stars.');
     lines.push('');
-    lines.push('## Top themes');
-    ins.top_themes.forEach(function (t, i) { lines.push((i + 1) + '. ' + t.name + ': ' + t.count + ' reviews (' + t.share_pct + '%), ' + t.avg_rating + ' stars'); });
+    lines.push('## Top themes (ranked by 1-2 star reviews)');
+    ins.top_themes.forEach(function (t, i) { lines.push((i + 1) + '. ' + t.name + ': ' + t.low_count + ' low-star of ' + t.count + ' reviews (' + t.share_pct + '%), avg ' + t.avg_rating); });
     lines.push('');
     lines.push('## What users said');
     ins.quotes.forEach(function (q) { lines.push('- "' + clipWords(q.text, qWords) + '" (' + q.rating + (q.rating === 1 ? ' star, ' : ' stars, ') + fmtDate(q.date) + ')'); });

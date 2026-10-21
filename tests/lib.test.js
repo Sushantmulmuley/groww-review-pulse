@@ -65,7 +65,7 @@ test('insights: counts come from code, not from the model', () => {
   const matched = ins.themes.reduce((a, t) => a + t.count, 0);
   assert.strictEqual(matched + ins.unmatched, reviews.length);
   assert.strictEqual(ins.top_themes.length, 3);
-  for (let i = 1; i < ins.top_themes.length; i++) assert.ok(ins.top_themes[i - 1].count >= ins.top_themes[i].count);
+  for (let i = 1; i < ins.top_themes.length; i++) assert.ok(ins.top_themes[i - 1].low_count >= ins.top_themes[i].low_count);
 });
 
 test('quotes: every quote is verbatim from a real review; invented ones are dropped and replaced', () => {

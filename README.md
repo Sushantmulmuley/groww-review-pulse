@@ -15,7 +15,7 @@ reviews.csv -> clean + PII strip (code) -> Gemini: themes, quotes, fee issue
 ```
 
 The model proposes and the code decides:
-- Themes are counted over **all** reviews by keyword tagging. The top 3 are ranked by count.
+- Themes are counted over **all** reviews by keyword tagging. The top 3 are ranked by **1-2 star review count** (ties: higher share of unhappy reviewers, then size), so the pulse leads with pain, not with "nice app".
 - Quotes must be verbatim substrings of real reviews, or they are dropped.
 - The fee issue is picked by counted confusion (a review names a charge and says it is hidden, unexpected, unexplained and so on).
 - The explainer is built only from `data/fee_facts.json`, which comes from official Groww pages. Banned advice words are stripped, and any number not in the inputs is rejected.

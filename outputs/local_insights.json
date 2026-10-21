@@ -1,5 +1,5 @@
 {
-  "run_date": "2026-10-17",
+  "run_date": "2026-10-21",
   "scope": {
     "rows_in": 12770,
     "dropped_bad_row": 0,
@@ -32,6 +32,7 @@
       "count": 255,
       "share_pct": 7.9,
       "avg_rating": 2.18,
+      "low_count": 169,
       "low_star_pct": 66.3
     },
     {
@@ -49,6 +50,7 @@
       "count": 234,
       "share_pct": 7.3,
       "avg_rating": 1.69,
+      "low_count": 189,
       "low_star_pct": 80.8
     },
     {
@@ -66,6 +68,7 @@
       "count": 273,
       "share_pct": 8.5,
       "avg_rating": 2.58,
+      "low_count": 151,
       "low_star_pct": 55.3
     },
     {
@@ -85,6 +88,7 @@
       "count": 814,
       "share_pct": 25.3,
       "avg_rating": 4.76,
+      "low_count": 21,
       "low_star_pct": 2.6
     },
     {
@@ -102,6 +106,7 @@
       "count": 87,
       "share_pct": 2.7,
       "avg_rating": 2.28,
+      "low_count": 55,
       "low_star_pct": 63.2
     }
   ],
@@ -109,41 +114,37 @@
   "unmatched_pct": 48.3,
   "top_themes": [
     {
-      "name": "Easy to use",
-      "count": 814,
-      "share_pct": 25.3,
-      "avg_rating": 4.76,
-      "low_star_pct": 2.6
-    },
-    {
-      "name": "Charges and fees",
-      "count": 273,
-      "share_pct": 8.5,
-      "avg_rating": 2.58,
-      "low_star_pct": 55.3
+      "name": "Support and resolution",
+      "count": 234,
+      "share_pct": 7.3,
+      "avg_rating": 1.69,
+      "low_count": 189,
+      "low_star_pct": 80.8
     },
     {
       "name": "App speed and reliability",
       "count": 255,
       "share_pct": 7.9,
       "avg_rating": 2.18,
+      "low_count": 169,
       "low_star_pct": 66.3
+    },
+    {
+      "name": "Charges and fees",
+      "count": 273,
+      "share_pct": 8.5,
+      "avg_rating": 2.58,
+      "low_count": 151,
+      "low_star_pct": 55.3
     }
   ],
   "quotes": [
     {
-      "review_id": "827bd38051",
-      "date": "2026-07-28",
-      "rating": 5,
-      "theme": "Easy to use",
-      "text": "Great app with a clean and user-friendly interface. It makes investing simple and easy to understand, even for beginners. The account setup is smooth, transactions are fast, and the educational …"
-    },
-    {
-      "review_id": "e0ddb95ca3",
-      "date": "2026-10-06",
-      "rating": 4,
-      "theme": "Charges and fees",
-      "text": "After the budget, the charges and taxes rates aren't affordable for the middle class (even for all classes), it is imposing too much taxes and charges (on all buying and …"
+      "review_id": "0d4ca70722",
+      "date": "2026-09-21",
+      "rating": 1,
+      "theme": "Support and resolution",
+      "text": "Worst customer care service, no reply for last few of my complaints till now"
     },
     {
       "review_id": "2a7d628c28",
@@ -151,6 +152,13 @@
       "rating": 3,
       "theme": "App speed and reliability",
       "text": "delay chart, slow chart sometimes stuck. and lots of bugs in this app"
+    },
+    {
+      "review_id": "e0ddb95ca3",
+      "date": "2026-10-06",
+      "rating": 4,
+      "theme": "Charges and fees",
+      "text": "After the budget, the charges and taxes rates aren't affordable for the middle class (even for all classes), it is imposing too much taxes and charges (on all buying and …"
     }
   ],
   "fee_issue": {
@@ -207,8 +215,8 @@
   },
   "flags": [
     "model themes unusable; default taxonomy used",
-    "quote 827bd38051 chosen by code",
-    "quote e0ddb95ca3 chosen by code",
-    "quote 2a7d628c28 chosen by code"
+    "quote 0d4ca70722 chosen by code",
+    "quote 2a7d628c28 chosen by code",
+    "quote e0ddb95ca3 chosen by code"
   ]
 }
