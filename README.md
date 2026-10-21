@@ -58,7 +58,8 @@ The model proposes and the code decides:
 ## Honest limits
 - Review text is user-written and unverified. Counts come from keyword tagging, so spot-check them.
 - Fee facts are copied from public pages and can go stale, so re-check the "Last checked" date.
-- The agent fills the MCP tool arguments. Check the doc entry and the draft by eye.
+- The agent fills the MCP tool arguments, and an agent can call a tool twice (one run appended the same entry to the Doc twice). Check the Doc entry and the draft by eye.
+- The code verifies numbers, quotes, limits and tone. It does not verify claims about causes: the model's wording can include phrases such as "driven by" that the data does not prove.
 
 ## Acknowledgements
 - The milestone brief from NextLeap's PM Fellowship defines the required tools, outputs and approval step.

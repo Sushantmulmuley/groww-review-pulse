@@ -1,8 +1,8 @@
 ## What to know about charges deducted on a trade
-- Brokerage is ₹20 or 0.1% of the order value, whichever is lower, with a minimum of ₹5 per executed order.
-- Selling shares from the demat account attracts a DP charge: ₹16.50 charged by Groww (not charged when the debit value is under ₹100) plus ₹3.50 charged by the depository.
-- Intraday orders carry no DP charge.
-- 18% GST applies on brokerage and DP charges.
+- Brokerage is charged at ₹20 or 0.1% of the order value, whichever is lower, with a minimum of ₹5 per executed order.
+- Selling shares from the demat account also attracts a DP charge: ₹16.50 charged by Groww plus ₹3.50 charged by the depository.
+- The ₹16.50 Groww fee is not charged when the debit value is under ₹100, and intraday orders carry no DP charge.
+- An 18% GST applies on brokerage and DP charges.
 - Regulatory and statutory charges such as STT, stamp duty and SEBI turnover fees are listed separately on the pricing page.
 
 Sources:

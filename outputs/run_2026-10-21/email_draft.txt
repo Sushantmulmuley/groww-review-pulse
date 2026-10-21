@@ -4,30 +4,32 @@ Subject: Weekly Product Pulse + Customer Clarification — 21 Oct 2026
 Scope: 3216 reviews, 25 Jul 2026 to 16 Oct 2026; average 3.42 stars.
 
 ## Top themes (ranked by 1-2 star reviews)
-1. Unresponsive automated customer support: 255 low-star of 313 reviews (9.7%), avg 1.67
-2. High brokerage and hidden charges: 167 low-star of 277 reviews (8.6%), avg 2.4
-3. Technical glitches and app lag: 156 low-star of 238 reviews (7.4%), avg 2.19
+1. Unresponsive customer care support: 301 low-star of 427 reviews (13.3%), avg 2.09
+2. App crashes and chart lag: 205 low-star of 375 reviews (11.7%), avg 2.54
+3. High brokerage and unexpected charges: 134 low-star of 228 reviews (7.1%), avg 2.46
 
 ## What users said
-- "three update every week what the hell" (1 star, 6 Aug 2026)
-- "brokrage rate is too High 😴" (1 star, 16 Sep 2026)
-- "customer support is very bad . Human agents are not replying in chat and there is a very large time of waiting" (1 star, 7 Sep 2026)
+- "customer care support not responding as I want to delete my demat account." (1 star, 7 Oct 2026)
+- "The withdrawal process is very slow and also very worst customer service." (1 star, 4 Aug 2026)
+- "The app keeps crashing continuously after the recent update. Kindly fix that!" (1 star, 31 Aug 2026)
 
 ## Key observation
-Across 3216 reviews with an average rating of 3.42, high brokerage and hidden charges drove 277 complaints, while unresponsive automated support led with 313. For trade charge deductions, 26 out of 127 users found them unexpected or unclear.
+Across 3216 reviews, 228 cited high brokerage and unexpected charges. Specifically, 26 out of 127 users mentioning trade charges found them unexpected or unclear, a 20.5% rate driven by misunderstandings of non-brokerage fees.
 
 ## Actions
-1. Display an itemized pre-trade cost breakdown showing exact brokerage, DP charges, and taxes before order placement.
-2. Introduce quick human agent escalation within chat support when automated bots fail to resolve user queries.
-3. Optimize release deployment schedules to decrease weekly app update frequency and resolve persistent lag issues.
+1. Show a complete pre-trade breakdown of estimated brokerage, DP, and statutory charges directly on the order confirmation screen.
+2. Implement automated routing and dedicated escalation queues for customer care support tickets regarding account deletion and fund withdrawals.
+3. Deploy crash monitoring and optimize charting libraries to resolve persistent application crashes and interface latency.
 
 ---
 
+Fee explanation (reusable support snippet)
+
 ## What to know about charges deducted on a trade
-- Brokerage is ₹20 or 0.1% of the order value, whichever is lower, with a minimum of ₹5 per executed order.
-- Selling shares from the demat account attracts a DP charge: ₹16.50 charged by Groww (not charged when the debit value is under ₹100) plus ₹3.50 charged by the depository.
-- Intraday orders carry no DP charge.
-- 18% GST applies on brokerage and DP charges.
+- Brokerage is charged at ₹20 or 0.1% of the order value, whichever is lower, with a minimum of ₹5 per executed order.
+- Selling shares from the demat account also attracts a DP charge: ₹16.50 charged by Groww plus ₹3.50 charged by the depository.
+- The ₹16.50 Groww fee is not charged when the debit value is under ₹100, and intraday orders carry no DP charge.
+- An 18% GST applies on brokerage and DP charges.
 - Regulatory and statutory charges such as STT, stamp duty and SEBI turnover fees are listed separately on the pricing page.
 
 Sources:

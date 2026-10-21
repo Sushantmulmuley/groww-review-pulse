@@ -1,120 +1,119 @@
 {
  "run_date": "2026-10-21",
- "source": "n8n execution of 21 Oct 2026, 12:20 IST (Gemini replies as returned)",
+ "source": "n8n execution of 21 Oct 2026, afternoon run (Gemini replies as returned)",
  "llm1": {
   "themes": [
    {
-    "name": "Beginner friendly UI and investing",
+    "name": "High brokerage and unexpected charges",
+    "keywords": [
+     "brokerage",
+     "charges",
+     "hidden",
+     "brokrage",
+     "deduction",
+     "tax",
+     "loot",
+     "dp",
+     "fees",
+     "expensive"
+    ],
+    "one_line": "Users complain about excessive brokerage deductions and unexpected trading charges reducing profits"
+   },
+   {
+    "name": "Unresponsive customer care support",
+    "keywords": [
+     "support",
+     "customer",
+     "agent",
+     "ticket",
+     "call",
+     "chat",
+     "reply",
+     "response",
+     "connect",
+     "service"
+    ],
+    "one_line": "Users struggle with unhelpful AI bots and slow human customer support"
+   },
+   {
+    "name": "App crashes and chart lag",
+    "keywords": [
+     "hanging",
+     "lag",
+     "crashing",
+     "update",
+     "chart",
+     "slow",
+     "refresh",
+     "freeze",
+     "blank",
+     "glitch"
+    ],
+    "one_line": "App freezing, price delays, and crashes disrupt trading and charting setups"
+   },
+   {
+    "name": "Funds withdrawal and settlement delay",
+    "keywords": [
+     "withdrawal",
+     "withdrawable",
+     "settled",
+     "balance",
+     "deducted",
+     "holding",
+     "wallet",
+     "credit",
+     "mandate",
+     "upi"
+    ],
+    "one_line": "Delays in fund withdrawals, wallet balance locks, and slow UPI mandates"
+   },
+   {
+    "name": "Easy interface for beginners",
     "keywords": [
      "easy",
      "simple",
      "interface",
      "beginners",
-     "friendly",
      "smooth",
-     "investing",
-     "mutual",
+     "satisfy",
      "best",
-     "investment"
+     "user friendly",
+     "investing"
     ],
-    "one_line": "Users appreciate the simple, beginner-friendly interface for investing and tracking mutual funds."
-   },
-   {
-    "name": "High brokerage and hidden charges",
-    "keywords": [
-     "brokerage",
-     "charges",
-     "brokrage",
-     "hidden",
-     "deductions",
-     "cut",
-     "expensive",
-     "high",
-     "cut",
-     "profit"
-    ],
-    "one_line": "Users express frustration over high brokerage and hidden deductions cutting into trade profits."
-   },
-   {
-    "name": "Unresponsive automated customer support",
-    "keywords": [
-     "support",
-     "customer",
-     "care",
-     "agent",
-     "chat",
-     "reply",
-     "ticket",
-     "human",
-     "call",
-     "response"
-    ],
-    "one_line": "Customers complain about lack of human assistance and unhelpful automated bot responses."
-   },
-   {
-    "name": "Technical glitches and app lag",
-    "keywords": [
-     "hanging",
-     "crash",
-     "crashing",
-     "freeze",
-     "stuck",
-     "glitch",
-     "blank",
-     "slow",
-     "bugs",
-     "update"
-    ],
-    "one_line": "Traders experience frequent app crashes, hanging screens, and delayed price updates."
-   },
-   {
-    "name": "Withdrawal delays and settlement holds",
-    "keywords": [
-     "withdraw",
-     "withdrawable",
-     "withdrawal",
-     "balance",
-     "settled",
-     "wallet",
-     "deducted",
-     "pending",
-     "transfer",
-     "credit"
-    ],
-    "one_line": "Investors face delayed payouts, uncredited balances, and unexplained fund holding periods."
+    "one_line": "Beginners appreciate the simple, intuitive UI for stock and mutual fund investments"
    }
   ],
   "quotes": [
    {
-    "review_id": "f1dde3763c",
-    "quote": "three update every week what the hell"
+    "review_id": "86439d2689",
+    "quote": "customer care support not responding as I want to delete my demat account."
    },
    {
-    "review_id": "af32154d2a",
-    "quote": "brokrage rate is too High 😴"
+    "review_id": "02a73a9c7c",
+    "quote": "The withdrawal process is very slow and also very worst customer service."
    },
    {
-    "review_id": "1d56a57888",
-    "quote": "customer support is very bad . Human agents are not replying in chat and there is a very large time of waiting"
+    "review_id": "2fb3720f54",
+    "quote": "The app keeps crashing continuously after the recent update. Kindly fix that!"
    }
   ],
   "fee_issue": {
    "id": "overall_charges",
-   "summary": "Users find overall charges unexpected because unexplained deductions, unexecuted order fees, and selling costs significantly erode small trading profits."
+   "summary": "Users misunderstand non-brokerage transaction fees and feel misled when deductions occur on unexecuted orders or erode small intraday profits."
   }
  },
  "llm2": {
-  "observation": "Across 3216 reviews with an average rating of 3.42, high brokerage and hidden charges drove 277 complaints, while unresponsive automated support led with 313. For trade charge deductions, 26 out of 127 users found them unexpected or unclear.",
+  "observation": "Across 3216 reviews, 228 cited high brokerage and unexpected charges. Specifically, 26 out of 127 users mentioning trade charges found them unexpected or unclear, a 20.5% rate driven by misunderstandings of non-brokerage fees.",
   "actions": [
-   "Display an itemized pre-trade cost breakdown showing exact brokerage, DP charges, and taxes before order placement.",
-   "Introduce quick human agent escalation within chat support when automated bots fail to resolve user queries.",
-   "Optimize release deployment schedules to decrease weekly app update frequency and resolve persistent lag issues."
+   "Show a complete pre-trade breakdown of estimated brokerage, DP, and statutory charges directly on the order confirmation screen.",
+   "Implement automated routing and dedicated escalation queues for customer care support tickets regarding account deletion and fund withdrawals.",
+   "Deploy crash monitoring and optimize charting libraries to resolve persistent application crashes and interface latency."
   ],
   "explainer_bullets": [
-   "Brokerage is ₹20 or 0.1% of the order value, whichever is lower, with a minimum of ₹5 per executed order.",
-   "Selling shares from the demat account attracts a DP charge: ₹16.50 charged by Groww (not charged when the debit value is under ₹100) plus ₹3.50 charged by the depository.",
-   "Intraday orders carry no DP charge.",
-   "18% GST applies on brokerage and DP charges.",
+   "Brokerage is charged at ₹20 or 0.1% of the order value, whichever is lower, with a minimum of ₹5 per executed order.",
+   "Selling shares from the demat account also attracts a DP charge: ₹16.50 charged by Groww plus ₹3.50 charged by the depository.",
+   "The ₹16.50 Groww fee is not charged when the debit value is under ₹100, and intraday orders carry no DP charge.",
+   "An 18% GST applies on brokerage and DP charges.",
    "Regulatory and statutory charges such as STT, stamp duty and SEBI turnover fees are listed separately on the pricing page."
   ]
  }
