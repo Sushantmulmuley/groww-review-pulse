@@ -15,7 +15,8 @@ Return ONLY one JSON object. No code fences, no commentary.
 Rules for observation and actions:
 1. Say what is going wrong or trending this week, using the INSIGHTS. Use only numbers that appear in INSIGHTS. Do not write dates.
 2. If INSIGHTS.fee_issue.trend.direction is "flat" or the sample is small, do not claim a trend.
-3. Actions are concrete product or support changes tied to the findings. No more than one action about the charge explainer.
+3. A theme's review count is a count of reviews, not of complaints. Only the low-star figure counts unhappy reviews. Say "reviews", never "complaints".
+4. Actions are concrete product or support changes tied to the findings. No more than one action about the charge explainer.
 
 Rules for explainer_bullets:
 1. Use only FACTS. Keep every rupee amount, percentage and rate exactly as written. Add no number that is not in FACTS.

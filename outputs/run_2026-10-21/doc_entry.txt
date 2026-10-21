@@ -1,0 +1,33 @@
+=== Weekly product log entry: 21 Oct 2026 ===
+date: 2026-10-21
+top_themes: Unresponsive automated customer support; High brokerage and hidden charges; Technical glitches and app lag
+identified_fee_issue: Charges deducted on a trade: Users find overall charges unexpected because unexplained deductions, unexecuted order fees, and selling costs significantly erode small trading profits.
+explanation_bullets:
+- Brokerage is ₹20 or 0.1% of the order value, whichever is lower, with a minimum of ₹5 per executed order.
+- Selling shares from the demat account attracts a DP charge: ₹16.50 charged by Groww (not charged when the debit value is under ₹100) plus ₹3.50 charged by the depository.
+- Intraday orders carry no DP charge.
+- 18% GST applies on brokerage and DP charges.
+- Regulatory and statutory charges such as STT, stamp duty and SEBI turnover fees are listed separately on the pricing page.
+source_links: https://groww.in/pricing , https://groww.in/help/stocks,-f&o,-ipo-&-mtf/sx-demat-account/how-much-does-groww-charge-for-stocks-1
+weekly_pulse:
+# Weekly product pulse: 21 Oct 2026
+Scope: 3216 reviews, 25 Jul 2026 to 16 Oct 2026; average 3.42 stars.
+
+## Top themes (ranked by 1-2 star reviews)
+1. Unresponsive automated customer support: 255 low-star of 313 reviews (9.7%), avg 1.67
+2. High brokerage and hidden charges: 167 low-star of 277 reviews (8.6%), avg 2.4
+3. Technical glitches and app lag: 156 low-star of 238 reviews (7.4%), avg 2.19
+
+## What users said
+- "three update every week what the hell" (1 star, 6 Aug 2026)
+- "brokrage rate is too High 😴" (1 star, 16 Sep 2026)
+- "customer support is very bad . Human agents are not replying in chat and there is a very large time of waiting" (1 star, 7 Sep 2026)
+
+## Key observation
+Across 3216 reviews with an average rating of 3.42, high brokerage and hidden charges drove 277 complaints, while unresponsive automated support led with 313. For trade charge deductions, 26 out of 127 users found them unexpected or unclear.
+
+## Actions
+1. Display an itemized pre-trade cost breakdown showing exact brokerage, DP charges, and taxes before order placement.
+2. Introduce quick human agent escalation within chat support when automated bots fail to resolve user queries.
+3. Optimize release deployment schedules to decrease weekly app update frequency and resolve persistent lag issues.
+=== end of entry ===
