@@ -117,7 +117,7 @@ function node(name, type, typeVersion, position, parameters, extra) {
   return Object.assign({ id: uuid(name), name: name, type: type, typeVersion: typeVersion, position: position, parameters: parameters }, extra || {});
 }
 const code = (name, pos, tail) => node(name, 'n8n-nodes-base.code', 2, pos, { mode: 'runOnceForAllItems', language: 'javaScript', jsCode: header + tail });
-const gemini = (name, pos, temp) => node(name, '@n8n/n8n-nodes-langchain.lmChatGoogleGemini', 1.2, pos, { modelName: 'models/gemini-2.5-flash', options: { temperature: temp, maxOutputTokens: 4096 } }, { credentials: CRED_GEMINI });
+const gemini = (name, pos, temp) => node(name, '@n8n/n8n-nodes-langchain.lmChatGoogleGemini', 1.2, pos, { modelName: 'models/gemini-3.8-flash', options: { temperature: temp, maxOutputTokens: 4096 } }, { credentials: CRED_GEMINI });
 const chain = (name, pos, textExpr, system) => node(name, '@n8n/n8n-nodes-langchain.chainLlm', 1.9, pos, {
   promptType: 'define', text: textExpr, hasOutputParser: false,
   messages: { messageValues: [{ type: 'SystemMessagePromptTemplate', message: system }] }, batching: {}
