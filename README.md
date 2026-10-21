@@ -6,6 +6,10 @@ An approval-gated AI workflow. It turns public Groww Play Store reviews into a w
 
 **Fee issue found (12 weeks, 25 Jul to 16 Oct 2026):** *charges deducted on a trade*. 26 of the 127 reviews that name it call it hidden or unexpected (20.5%). The trend is flat. Next in line is brokerage, with 10 of 99.
 
+## Live app
+**Vitals** (read-only viewer): https://sushantmulmuley.github.io/groww-review-pulse/
+It loads the CSV and the fact bank, applies the model's recorded replies from the real n8n run (`docs/data/snapshot.json`), and recomputes every number, quote check and the Doc entry in your browser with the same `lib.js` the workflow uses. It also runs 21 live checks and shows the SHA-256 fingerprint of the exact text that was approved. Approval and publishing happen in n8n, not on this page. `tests/snapshot.test.js` asserts that the recomputed Doc entry equals the entry n8n wrote.
+
 ## How it works
 
 ```

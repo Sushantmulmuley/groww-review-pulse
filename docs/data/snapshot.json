@@ -1,1 +1,121 @@
-{"run_date":"2026-10-21","source":"pending","llm1":null,"llm2":null}
+{
+ "run_date": "2026-10-21",
+ "source": "n8n execution of 21 Oct 2026, 12:20 IST (Gemini replies as returned)",
+ "llm1": {
+  "themes": [
+   {
+    "name": "Beginner friendly UI and investing",
+    "keywords": [
+     "easy",
+     "simple",
+     "interface",
+     "beginners",
+     "friendly",
+     "smooth",
+     "investing",
+     "mutual",
+     "best",
+     "investment"
+    ],
+    "one_line": "Users appreciate the simple, beginner-friendly interface for investing and tracking mutual funds."
+   },
+   {
+    "name": "High brokerage and hidden charges",
+    "keywords": [
+     "brokerage",
+     "charges",
+     "brokrage",
+     "hidden",
+     "deductions",
+     "cut",
+     "expensive",
+     "high",
+     "cut",
+     "profit"
+    ],
+    "one_line": "Users express frustration over high brokerage and hidden deductions cutting into trade profits."
+   },
+   {
+    "name": "Unresponsive automated customer support",
+    "keywords": [
+     "support",
+     "customer",
+     "care",
+     "agent",
+     "chat",
+     "reply",
+     "ticket",
+     "human",
+     "call",
+     "response"
+    ],
+    "one_line": "Customers complain about lack of human assistance and unhelpful automated bot responses."
+   },
+   {
+    "name": "Technical glitches and app lag",
+    "keywords": [
+     "hanging",
+     "crash",
+     "crashing",
+     "freeze",
+     "stuck",
+     "glitch",
+     "blank",
+     "slow",
+     "bugs",
+     "update"
+    ],
+    "one_line": "Traders experience frequent app crashes, hanging screens, and delayed price updates."
+   },
+   {
+    "name": "Withdrawal delays and settlement holds",
+    "keywords": [
+     "withdraw",
+     "withdrawable",
+     "withdrawal",
+     "balance",
+     "settled",
+     "wallet",
+     "deducted",
+     "pending",
+     "transfer",
+     "credit"
+    ],
+    "one_line": "Investors face delayed payouts, uncredited balances, and unexplained fund holding periods."
+   }
+  ],
+  "quotes": [
+   {
+    "review_id": "f1dde3763c",
+    "quote": "three update every week what the hell"
+   },
+   {
+    "review_id": "af32154d2a",
+    "quote": "brokrage rate is too High 😴"
+   },
+   {
+    "review_id": "1d56a57888",
+    "quote": "customer support is very bad . Human agents are not replying in chat and there is a very large time of waiting"
+   }
+  ],
+  "fee_issue": {
+   "id": "overall_charges",
+   "summary": "Users find overall charges unexpected because unexplained deductions, unexecuted order fees, and selling costs significantly erode small trading profits."
+  }
+ },
+ "llm2": {
+  "observation": "Across 3216 reviews with an average rating of 3.42, high brokerage and hidden charges drove 277 complaints, while unresponsive automated support led with 313. For trade charge deductions, 26 out of 127 users found them unexpected or unclear.",
+  "actions": [
+   "Display an itemized pre-trade cost breakdown showing exact brokerage, DP charges, and taxes before order placement.",
+   "Introduce quick human agent escalation within chat support when automated bots fail to resolve user queries.",
+   "Optimize release deployment schedules to decrease weekly app update frequency and resolve persistent lag issues."
+  ],
+  "explainer_bullets": [
+   "Brokerage is ₹20 or 0.1% of the order value, whichever is lower, with a minimum of ₹5 per executed order.",
+   "Selling shares from the demat account attracts a DP charge: ₹16.50 charged by Groww (not charged when the debit value is under ₹100) plus ₹3.50 charged by the depository.",
+   "Intraday orders carry no DP charge.",
+   "18% GST applies on brokerage and DP charges.",
+   "Regulatory and statutory charges such as STT, stamp duty and SEBI turnover fees are listed separately on the pricing page."
+  ]
+ }
+}
