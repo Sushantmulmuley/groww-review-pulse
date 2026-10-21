@@ -3,7 +3,7 @@
 Record the screen with your voice. Have these tabs open first: n8n (main workflow), n8n (MCP server workflow), the Google Doc, Gmail Drafts, and Gmail inbox.
 
 **0:00 – 0:20 | What this is**
-"This is a weekly review pulse for Groww. It reads 12 weeks of public Play Store reviews, writes a short product note and a neutral fee explainer, waits for my approval, and only then logs to a Google Doc and creates a Gmail draft. It never sends email."
+"This is Vitals, a weekly review pulse for Groww. It reads 12 weeks of public Play Store reviews, writes a short product note and a neutral fee explainer, waits for my approval, and only then logs to a Google Doc and creates a Gmail draft. It never sends email."
 
 **0:20 – 0:50 | The two workflows**
 Show the MCP server workflow: "This exposes exactly two tools, append to doc and create email draft. There is no send tool."

@@ -1,5 +1,5 @@
 'use strict';
-/* Review Pulse: a read-only viewer. Everything shown is recomputed here from the CSV and the
+/* Vitals: a read-only viewer. Everything shown is recomputed here from the CSV and the
    fact bank with the same lib.js that runs inside the n8n workflow. The model's raw proposals
    (themes, keywords, quote ids, wording) are loaded from data/snapshot.json. */
 
@@ -99,8 +99,8 @@ function banner() {
 function vOverview() {
   const { stats, ins, pulse } = S; const t = ins.top_themes[0], f = ins.fee_issue;
   const passed = S.checks.filter(c => c.ok).length;
-  return banner() + '<h1>12 weeks of Groww reviews, turned into one weekly pulse.</h1>' +
-    '<p class="lede">Public Play Store reviews go in. A verified product note and a neutral fee explainer come out. Nothing is published until a person approves it. Every number on this page is recomputed in your browser.</p>' +
+  return banner() + '<h1>Your product's weekly vitals, from 12 weeks of Groww reviews.</h1>' +
+    '<p class="lede"><b>Every number, verified.</b> Public Play Store reviews go in. A verified product note and a neutral fee explainer come out. Nothing is published until a person approves it. Every number on this page is recomputed in your browser.</p>' +
     '<div class="grid g4">' +
     stat(stats.kept.toLocaleString('en-IN'), 'reviews analysed, ' + fmtDate(stats.date_from) + ' to ' + fmtDate(stats.date_to)) +
     stat(stats.avg_rating + ' ★', stats.low_star_pct + '% of reviews are 1 or 2 stars') +
@@ -182,7 +182,7 @@ function route() {
   const id = (location.hash || '#overview').slice(1); const v = RENDER[id] ? id : 'overview';
   $nav.innerHTML = VIEWS.map(([k, l]) => '<a href="#' + k + '"' + (k === v ? ' aria-current="page"' : '') + '>' + l + '</a>').join('');
   $app.innerHTML = RENDER[v]();
-  document.title = VIEWS.find(x => x[0] === v)[1] + ' · Review Pulse';
+  document.title = VIEWS.find(x => x[0] === v)[1] + ' · Vitals';
   window.scrollTo(0, 0);
   if (v === 'approval') {
     document.getElementById('verify').onclick = async () => {

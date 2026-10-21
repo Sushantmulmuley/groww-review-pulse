@@ -1,4 +1,6 @@
-# Groww Weekly Review Pulse
+# Vitals: weekly product pulse from app reviews
+
+*Every number, verified.* Built for the Groww Play Store reviews.
 
 An approval-gated AI workflow. It turns public Groww Play Store reviews into a weekly product pulse and a neutral fee explainer. After a human approves, it logs both to a Google Doc and creates a Gmail **draft**. It never sends email.
 
