@@ -4,7 +4,7 @@
    (themes, keywords, quote ids, wording) are loaded from data/snapshot.json. */
 
 const VIEWS = [
-  ['overview', 'Overview'], ['insights', 'Insights'], ['note', 'Weekly note'], ['fee', 'Fee explainer'],
+  ['overview', 'Overview'], ['reviews', 'Reviews'], ['insights', 'Insights'], ['note', 'Weekly note'], ['fee', 'Fee explainer'],
   ['approval', 'Approval'], ['checks', 'Checks'], ['about', 'How it works']
 ];
 const S = {}; // state
@@ -48,7 +48,27 @@ async function compute() {
   S.ins = ins; S.pulse = pulse; S.expl = expl; S.payload = payload; S.docEntry = docEntry;
   S.fingerprint = await sha256(docEntry);
   S.modelUsed = !!snap.llm1;
+  const proposed = (snap.llm1 && Array.isArray(snap.llm1.themes) ? snap.llm1.themes : DEFAULT_THEMES).slice(0, 5).map(t => ({ name: t.name, keywords: t.keywords.map(normText).filter(Boolean), one_line: t.one_line }));
+  S.themeOf = {}; tagThemes(S.reviews, proposed).themes.forEach(t => t.ids.forEach(id => { S.themeOf[id] = t.name; }));
+  S.weekly = weeklyConfused(S.reviews, ins.fee_issue.id);
+  S.rf = { q: '', stars: 'all', theme: 'all', fee: false, page: 0 };
   S.checks = runChecks();
+}
+
+function weeklyConfused(reviews, feeId) {
+  const monday = d => { const t = new Date(d + 'T00:00:00Z'); const day = (t.getUTCDay() + 6) % 7; t.setUTCDate(t.getUTCDate() - day); return t.toISOString().slice(0, 10); };
+  const weeks = {};
+  reviews.forEach(r => {
+    const w = monday(r.date); weeks[w] = weeks[w] || { named: 0, confused: 0 };
+    for (let i = 0; i < FEE_TYPES.length; i++) {
+      if (FEE_TYPES[i].re.test(r.text)) { if (FEE_TYPES[i].id === feeId) { weeks[w].named++; if (CONFUSE_RE.test(r.text)) weeks[w].confused++; } break; }
+    }
+  });
+  return Object.keys(weeks).sort().map(w => ({ week: w, named: weeks[w].named, confused: weeks[w].confused }));
+}
+function isFeeConfused(r, feeId) {
+  for (let i = 0; i < FEE_TYPES.length; i++) if (FEE_TYPES[i].re.test(r.text)) return FEE_TYPES[i].id === feeId && CONFUSE_RE.test(r.text);
+  return false;
 }
 
 function runChecks() {
@@ -118,6 +138,37 @@ function vOverview() {
     '</div>' +
     '<p style="margin-top:22px" class="row"><a class="btn" href="#note">Read the weekly note</a><a class="btn ghost" href="#checks">' + passed + ' of ' + S.checks.length + ' checks passing</a></p>';
 }
+function filteredReviews() {
+  const f = S.rf, q = normText(f.q);
+  return S.reviews.filter(r => (f.stars === 'all' || (f.stars === 'low' && r.rating <= 2) || (f.stars === 'mid' && r.rating === 3) || (f.stars === 'high' && r.rating >= 4)) &&
+    (f.theme === 'all' || S.themeOf[r.id] === f.theme) && (!f.fee || isFeeConfused(r, S.ins.fee_issue.id)) && (!q || normText(r.text).includes(q) || r.id.startsWith(q)));
+}
+function reviewList() {
+  const list = filteredReviews(), per = 20, pages = Math.max(1, Math.ceil(list.length / per)); S.rf.page = Math.min(S.rf.page, pages - 1);
+  const rows = list.slice(S.rf.page * per, S.rf.page * per + per);
+  return '<p style="color:var(--ink-2)"><b>' + list.length.toLocaleString('en-IN') + '</b> of ' + S.reviews.length.toLocaleString('en-IN') + ' reviews</p>' +
+    (rows.length ? rows.map(r => '<div class="card" style="margin-bottom:10px"><div class="row" style="justify-content:space-between"><span><b>' + r.rating + ' ★</b> · ' + fmtDate(r.date) + (S.themeOf[r.id] ? ' · <span class="pill">' + e(S.themeOf[r.id]) + '</span>' : '') + '</span><span style="color:var(--ink-2);font-size:12px">' + e(r.id) + '</span></div><p style="margin:8px 0 0">' + e(r.text) + '</p></div>').join('') : '<p class="note">No reviews match these filters.</p>') +
+    '<div class="row" style="margin-top:12px"><button class="ghost" id="prev"' + (S.rf.page ? '' : ' disabled') + '>Previous</button><span>Page ' + (S.rf.page + 1) + ' of ' + pages + '</span><button class="ghost" id="next"' + (S.rf.page < pages - 1 ? '' : ' disabled') + '>Next</button></div>';
+}
+function vReviews() {
+  const f = S.rf, opt = (v, l, cur) => '<option value="' + e(v) + '"' + (cur === v ? ' selected' : '') + '>' + e(l) + '</option>';
+  return banner() + '<h1>The reviews behind the numbers</h1><p class="lede">Every count on this site comes from these reviews. Search them, filter by stars or theme, or look only at reviews that call the chosen charge hidden or unclear.</p>' +
+    '<div class="card"><div class="grid g4"><div><label>Search text or review id<input type="text" id="q" value="' + e(f.q) + '" placeholder="e.g. brokerage"></label></div>' +
+    '<div><label>Stars<br><select id="stars">' + opt('all', 'All', f.stars) + opt('low', '1-2 stars', f.stars) + opt('mid', '3 stars', f.stars) + opt('high', '4-5 stars', f.stars) + '</select></label></div>' +
+    '<div><label>Theme<br><select id="theme">' + opt('all', 'All themes', f.theme) + S.ins.themes.map(t => opt(t.name, t.name, f.theme)).join('') + '</select></label></div>' +
+    '<div><label><br><input type="checkbox" id="fee"' + (f.fee ? ' checked' : '') + '> Only “' + e(S.ins.fee_issue.name.toLowerCase()) + '”: hidden or unclear</label></div></div></div>' +
+    '<div id="rlist" style="margin-top:14px">' + reviewList() + '</div>';
+}
+function bindReviews() {
+  const refresh = () => { document.getElementById('rlist').innerHTML = reviewList(); bindPager(); };
+  const bindPager = () => { const p = document.getElementById('prev'), n = document.getElementById('next'); if (p) p.onclick = () => { S.rf.page--; refresh(); }; if (n) n.onclick = () => { S.rf.page++; refresh(); }; };
+  document.getElementById('q').oninput = ev => { S.rf.q = ev.target.value; S.rf.page = 0; refresh(); };
+  document.getElementById('stars').onchange = ev => { S.rf.stars = ev.target.value; S.rf.page = 0; refresh(); };
+  document.getElementById('theme').onchange = ev => { S.rf.theme = ev.target.value; S.rf.page = 0; refresh(); };
+  document.getElementById('fee').onchange = ev => { S.rf.fee = ev.target.checked; S.rf.page = 0; refresh(); };
+  bindPager();
+}
+
 function vInsights() {
   const { ins } = S; const max = Math.max.apply(null, ins.themes.map(t => t.low_count));
   const row = (t, i, top) => '<div class="rank"><span class="no">' + (top ? i + 1 : '·') + '</span><span class="nm">' + e(t.name) + '</span><span class="val">' + t.low_count + ' low-star</span>' +
@@ -152,8 +203,22 @@ function vFee() {
     f.candidates.map((c, i) => '<tr class="' + (i === 0 ? 'win' : '') + '"><td>' + e((S.bank.entries[c.id] || { name: c.id }).name) + (i === 0 ? ' ←' : '') + '</td><td class="num">' + c.named + '</td><td class="num">' + c.confused + '</td><td class="num">' + c.confusion_rate_pct + '%</td></tr>').join('') +
     '</tbody></table></div>' +
     '<p style="color:var(--ink-2);font-size:14px">' + e(f.summary) + ' Trend: ' + (f.trend && f.trend.direction === 'flat' ? 'steady week on week.' : e((f.trend || {}).direction || 'n/a') + '.') + '</p>' +
+    '<h2>Hidden or unclear mentions, week by week</h2>' + weeklyChart() +
     '<h2>What support can send to a confused customer</h2><div class="card"><ul class="clean">' + expl.bullets.map(b => '<li>' + e(b) + '</li>').join('') + '</ul>' +
     '<p style="margin:14px 0 0;font-size:14px">Sources: ' + expl.links.map(l => '<a href="' + e(l.url) + '" target="_blank" rel="noopener">' + e(l.title) + '</a>').join(' · ') + '<br><b>Last checked: ' + e(expl.last_checked) + '</b></p></div>';
+}
+function weeklyChart() {
+  const w = S.weekly, max = Math.max(1, Math.max.apply(null, w.map(x => x.confused)));
+  const W = 960, H = 190, pad = 28, bw = (W - pad * 2) / w.length;
+  const bars = w.map((x, i) => { const h = Math.round((H - 50) * x.confused / max), xx = pad + i * bw + 4;
+    return '<rect x="' + xx + '" y="' + (H - 28 - h) + '" width="' + (bw - 8) + '" height="' + h + '" rx="4" fill="var(--bar)"/><text x="' + (xx + (bw - 8) / 2) + '" y="' + (H - 32 - h) + '" text-anchor="middle" font-size="12" fill="var(--ink)">' + x.confused + '</text>' +
+      '<text x="' + (xx + (bw - 8) / 2) + '" y="' + (H - 10) + '" text-anchor="middle" font-size="11" fill="var(--ink-2)">' + e(fmtDate(x.week).replace(/ 20\d\d$/, '')) + '</text>'; }).join('');
+  return '<div class="card scroll"><svg viewBox="0 0 ' + W + ' ' + H + '" width="100%" role="img" aria-label="Hidden or unclear mentions per week">' + bars + '</svg><p style="margin:6px 0 0;color:var(--ink-2);font-size:13px">Weeks start on Monday. A mention counts when a review names the charge and calls it hidden, unexpected or unclear.</p></div>';
+}
+function emailPanel() {
+  return '<h2>Email draft</h2><div class="card"><span class="pill warn">Draft, not sent</span><p style="margin:10px 0 4px"><b>Subject:</b> ' + e(S.payload.email.subject) + '</p><pre id="mailbody">' + e(S.payload.email.body) + '</pre>' +
+    '<div class="row" style="margin-top:12px"><button id="copymail">Copy draft text</button><button class="ghost" id="emlmail">Download as .eml (unsent)</button></div>' +
+    '<p style="color:var(--ink-2);font-size:13px;margin:10px 0 0">The real Gmail draft is created by n8n after approval. This copy is for reading.</p></div>';
 }
 function vApproval() {
   return banner() + '<h1>The approval gate</h1>' +
@@ -162,7 +227,7 @@ function vApproval() {
     '<div class="card"><h3>Email draft subject</h3><p style="margin:0 0 14px">' + e(S.payload.email.subject) + '</p><h3>Fingerprint (SHA-256)</h3><p class="fp">' + S.fingerprint + '</p>' +
     '<p style="color:var(--ink-2);font-size:14px">A short code that changes completely if even one character changes. Anyone can recompute it from the text.</p></div></div>' +
     '<h2>Check what was actually logged</h2><p class="lede" style="font-size:15px">Paste the entry from the Google Doc. The page hashes it and compares it with the fingerprint above.</p>' +
-    '<textarea id="paste" placeholder="Paste the Doc entry here"></textarea><div class="row" style="margin-top:10px"><button id="verify">Compare</button><span id="vres"></span></div>';
+    '<textarea id="paste" placeholder="Paste the Doc entry here"></textarea><div class="row" style="margin-top:10px"><button id="verify">Compare</button><span id="vres"></span></div>' + emailPanel();
 }
 function vChecks() {
   const c = S.checks; const ok = c.filter(x => x.ok).length;
@@ -176,7 +241,7 @@ function vAbout() {
     '<div class="card"><h3>Where to look</h3><ul class="clean"><li><a href="https://github.com/Sushantmulmuley/groww-review-pulse">GitHub repository and README</a></li><li><a href="data/reviews.csv">Reviews CSV (12 weeks, no names)</a></li><li><a href="data/fee_facts.json">Fee fact bank from official pages</a></li><li><a href="n8n/review-pulse-main.json">Main workflow JSON</a></li><li><a href="n8n/mcp-server.json">MCP server workflow JSON</a></li></ul></div></div>' +
     '<h2>Honest limits</h2><ul class="clean"><li>Reviews are user-written and unverified. Theme counts come from keyword matching, so spot-check them.</li><li>Fee facts are copied from public pages and can go stale. Check the Last checked date.</li><li>This page only displays and verifies. Approval and publishing happen in n8n.</li></ul>';
 }
-const RENDER = { overview: vOverview, insights: vInsights, note: vNote, fee: vFee, approval: vApproval, checks: vChecks, about: vAbout };
+const RENDER = { overview: vOverview, reviews: vReviews, insights: vInsights, note: vNote, fee: vFee, approval: vApproval, checks: vChecks, about: vAbout };
 
 function route() {
   const id = (location.hash || '#overview').slice(1); const v = RENDER[id] ? id : 'overview';
@@ -184,7 +249,13 @@ function route() {
   $app.innerHTML = RENDER[v]();
   document.title = VIEWS.find(x => x[0] === v)[1] + ' · Vitals';
   window.scrollTo(0, 0);
+  if (v === 'reviews') bindReviews();
   if (v === 'approval') {
+    document.getElementById('copymail').onclick = async ev => { try { await navigator.clipboard.writeText('Subject: ' + S.payload.email.subject + '\n\n' + S.payload.email.body); ev.target.textContent = 'Copied'; } catch (x) { ev.target.textContent = 'Copy failed'; } };
+    document.getElementById('emlmail').onclick = () => {
+      const eml = 'X-Unsent: 1\r\nSubject: ' + S.payload.email.subject + '\r\nContent-Type: text/plain; charset=utf-8\r\n\r\n' + S.payload.email.body.replace(/\n/g, '\r\n');
+      const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([eml], { type: 'message/rfc822' })); a.download = 'vitals-weekly-pulse-draft.eml'; a.click();
+    };
     document.getElementById('verify').onclick = async () => {
       const t = document.getElementById('paste').value.replace(/\r\n/g, '\n');
       const norm = s => s.replace(/\s+$/g, '');

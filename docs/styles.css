@@ -85,3 +85,7 @@ a { color: var(--teal); }
 .foot { color: var(--ink-2); font-size: 13px; padding-bottom: 40px; border-top: 1px solid var(--line); padding-top: 18px; }
 .err { color: var(--bad); }
 @media (max-width: 560px) { .rank { grid-template-columns: 24px 1fr; } .rank .val { grid-column: 2; } .bar, .sub { grid-column: 2; } }
+label { display: block; font-size: 13px; color: var(--ink-2); font-weight: 600; }
+select { width: 100%; font: inherit; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--ink); margin-top: 4px; }
+label input[type=text] { margin-top: 4px; font-weight: 400; }
+label input[type=checkbox] { width: auto; margin-right: 6px; }
