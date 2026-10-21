@@ -99,7 +99,7 @@ function banner() {
 function vOverview() {
   const { stats, ins, pulse } = S; const t = ins.top_themes[0], f = ins.fee_issue;
   const passed = S.checks.filter(c => c.ok).length;
-  return banner() + '<h1>Your product's weekly vitals, from 12 weeks of Groww reviews.</h1>' +
+  return banner() + '<h1>Your product\'s weekly vitals, from 12 weeks of Groww reviews.</h1>' +
     '<p class="lede"><b>Every number, verified.</b> Public Play Store reviews go in. A verified product note and a neutral fee explainer come out. Nothing is published until a person approves it. Every number on this page is recomputed in your browser.</p>' +
     '<div class="grid g4">' +
     stat(stats.kept.toLocaleString('en-IN'), 'reviews analysed, ' + fmtDate(stats.date_from) + ' to ' + fmtDate(stats.date_to)) +
